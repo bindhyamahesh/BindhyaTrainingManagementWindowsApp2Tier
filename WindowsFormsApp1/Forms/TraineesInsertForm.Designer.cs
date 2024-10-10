@@ -132,6 +132,7 @@ namespace TrainingManagementProject.Forms
             this.Controls.Add(this.collegesComboBox);
             this.Name = "TraineesInsertForm";
             this.Text = "TraineesInsertForm";
+            this.Load += new System.EventHandler(this.TraineesInsertForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

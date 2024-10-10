@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrainingManagementDomain;
 using TrainingManagementWithClassLibraryADO;
 namespace Trainingmanagement.Forms
 {
     public partial class BatchDetailsForm : Form
     {
-        BatchRepository batchRepository;
+        IBatchRepository batchRepository;
         public BatchDetailsForm()
         {
             InitializeComponent();
@@ -25,8 +26,8 @@ namespace Trainingmanagement.Forms
         {
             batchDetailsDatagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 8, FontStyle.Bold);
 
-            DataTable batchDetaildt = batchRepository.GetBatchDetails();
-            batchDetailsDatagrid.DataSource = batchDetaildt;
+            List<Batches> batches = batchRepository.GetBatchDetails();
+            batchDetailsDatagrid.DataSource = batches;
             CustomizeDataGridHeader();
         }
         void CustomizeDataGridHeader()

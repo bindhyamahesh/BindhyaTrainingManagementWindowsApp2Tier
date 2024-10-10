@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using TrainingManagementWithClassLibraryADO;
-using TrainingManagementWithClassLibraryADO.Models;
+using TrainingManagementDomain;
 
 namespace TrainingManagementProject.Forms
 {
@@ -43,7 +43,7 @@ namespace TrainingManagementProject.Forms
                sqlCommand.Parameters.AddWithValue("@TraineeName", traineeNameTextBox.Text);
                sqlCommand.ExecuteNonQuery();
                sqlConnection.Close();*/
-            Trainee trainee = new Trainee();
+            Trainees trainee = new Trainees();
             trainee.CollegeId= Convert.ToInt32(collegesComboBox.SelectedValue);
             trainee.TraineeName = traineeNameTextBox.Text;
            traineeRepository.InsertTraineeDetails(trainee);

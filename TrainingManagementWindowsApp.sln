@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingManagementProject",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{3EDB9354-9043-4735-8BFE-B861C00AD99C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2Domain", "2Domain", "{832C7025-4DFF-4DAD-8E3F-CDCAEB32B727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingManagementDomain", "TrainingManagementDomain\TrainingManagementDomain.csproj", "{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{E20A0D2D-F2C3-4A3D-AA20-EB211983A4A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E20A0D2D-F2C3-4A3D-AA20-EB211983A4A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E20A0D2D-F2C3-4A3D-AA20-EB211983A4A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0896B841-1F3E-4ABD-9271-3F0C7EEA2EC3} = {3EDB9354-9043-4735-8BFE-B861C00AD99C}
 		{E20A0D2D-F2C3-4A3D-AA20-EB211983A4A8} = {0BE32320-B9D5-4173-913A-86CDB8A2B90E}
+		{5BC1FC5F-3D8B-467C-BE6B-9217DB8CDA8F} = {832C7025-4DFF-4DAD-8E3F-CDCAEB32B727}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5FF0AB3D-EF1B-4672-B713-4702FC0D51C0}

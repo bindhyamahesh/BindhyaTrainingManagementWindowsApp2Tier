@@ -30,29 +30,30 @@ namespace TrainingManagementProject.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            traineesDataGrid = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)traineesDataGrid).BeginInit();
-            SuspendLayout();
+            this.traineesDataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.traineesDataGrid)).BeginInit();
+            this.SuspendLayout();
             // 
             // traineesDataGrid
             // 
-            traineesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            traineesDataGrid.Location = new Point(12, 12);
-            traineesDataGrid.Name = "traineesDataGrid";
-            traineesDataGrid.Size = new Size(690, 307);
-            traineesDataGrid.TabIndex = 0;
+            this.traineesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.traineesDataGrid.Location = new System.Drawing.Point(10, 10);
+            this.traineesDataGrid.Name = "traineesDataGrid";
+            this.traineesDataGrid.Size = new System.Drawing.Size(893, 473);
+            this.traineesDataGrid.TabIndex = 0;
             // 
             // TraineesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(traineesDataGrid);
-            Name = "TraineesForm";
-            Text = "TraineesForm";
-            Load += TraineesForm_Load;
-            ((System.ComponentModel.ISupportInitialize)traineesDataGrid).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(915, 495);
+            this.Controls.Add(this.traineesDataGrid);
+            this.Name = "TraineesForm";
+            this.Text = "TraineesForm";
+            this.Load += new System.EventHandler(this.TraineesForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.traineesDataGrid)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

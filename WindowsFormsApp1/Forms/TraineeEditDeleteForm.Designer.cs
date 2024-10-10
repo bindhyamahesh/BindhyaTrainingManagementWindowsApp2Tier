@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.collegesComboBox = new System.Windows.Forms.ComboBox();
             this.traineeNameCombobox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -73,12 +74,13 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(404, 208);
+            this.saveButton.Location = new System.Drawing.Point(378, 185);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(64, 20);
             this.saveButton.TabIndex = 13;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label2
             // 
@@ -114,11 +116,21 @@
             this.traineeNameCombobox.Size = new System.Drawing.Size(284, 21);
             this.traineeNameCombobox.TabIndex = 18;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(300, 185);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 20);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // TraineeEditDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.traineeNameCombobox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox collegesComboBox;
         private System.Windows.Forms.ComboBox traineeNameCombobox;
+        private System.Windows.Forms.Button button1;
     }
 }

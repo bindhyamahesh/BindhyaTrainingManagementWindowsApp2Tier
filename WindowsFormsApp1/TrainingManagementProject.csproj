@@ -167,6 +167,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TrainingManagementDomain\TrainingManagementDomain.csproj">
+      <Project>{5bc1fc5f-3d8b-467c-be6b-9217db8cda8f}</Project>
+      <Name>TrainingManagementDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrainingManagementWithClassLibraryADO\TrainingManagementWithClassLibraryADO\TrainingManagementWithClassLibraryADO.csproj">
       <Project>{0896b841-1f3e-4abd-9271-3f0c7eea2ec3}</Project>
       <Name>TrainingManagementWithClassLibraryADO</Name>

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainingManagementWithClassLibraryADO;
-using TrainingManagementWithClassLibraryADO.Models;
+using TrainingManagementDomain;
 
 namespace TrainingManagementProject.Forms
 {

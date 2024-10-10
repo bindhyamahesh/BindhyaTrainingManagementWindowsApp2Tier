@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainingManagementWithClassLibraryADO;
+using TrainingManagementDomain;
 
 namespace TrainingManagementProject.Forms
 {
     
     public partial class CollegeDetailsForm : Form
     {
-        CollegeDetailsRepository collegeDetailsRepository;
+        ICollegeDetailsRepository collegeDetailsRepository;
         public CollegeDetailsForm()
         {
             InitializeComponent();
@@ -32,10 +33,10 @@ namespace TrainingManagementProject.Forms
         {
             collegeDetailsDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 8, FontStyle.Bold);
           
-
-            DataTable collegeDetailsdt = collegeDetailsRepository.GetCollegeDetails();
-            
-            collegeDetailsDataGrid.DataSource = collegeDetailsdt;
+            List<College> colleges=new List<College>();
+            //DataTable collegeDetailsdt = collegeDetailsRepository.GetCollegeDetails();
+            colleges= collegeDetailsRepository.GetCollegeDetails();
+            collegeDetailsDataGrid.DataSource = colleges;
             CustomizeDataGridHeader();
             collegeDetailsDataGrid.Columns["CollegeId"].Width = 100;
             collegeDetailsDataGrid.Columns[1].Width = 200;

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrainingManagementWithClassLibraryADO;
-using TrainingManagementWithClassLibraryADO.Models;
+using TrainingManagementDomain;
 
 namespace TrainingManagementProject.Forms
 {
@@ -33,22 +33,21 @@ namespace TrainingManagementProject.Forms
         {
             collegeData = new College();
             collegeData.CollegeId=collegeID;
-            DataTable collegedetailsByIDdt = collegeDetailsRepository.GetCollegeDetailsByID(collegeData);
-            if (collegedetailsByIDdt.Rows.Count > 0)
-            {
-                DataRow row = collegedetailsByIDdt.Rows[0];
-                collegeNameTextbox.Text = row["CollegeName"].ToString();
-                remarksTextbox.Text = row["Remarks"].ToString();
-                locationTextbox.Text = row["Location"].ToString();
+            College selectedCollege = collegeDetailsRepository.GetCollegeDetailsByID(collegeData);
+            
 
-            }
+                collegeNameTextbox.Text = selectedCollege.CollegeName;
+                remarksTextbox.Text = selectedCollege.Remarks;
+                locationTextbox.Text = selectedCollege.Location;
+
+            
         }
         void PopulateCollegeCombo()
         {
 
             collegeNameCombobox.DataSource = collegeDetailsRepository.GetCollegeDetails();
             collegeNameCombobox.DisplayMember = "CollegeName";
-            collegeNameCombobox.ValueMember = "CollegeID";
+            collegeNameCombobox.ValueMember = "CollegeId";
         }
 
         private void collegeNameCombobox_SelectionChangeCommitted(object sender, EventArgs e)
@@ -65,12 +64,44 @@ namespace TrainingManagementProject.Forms
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            if (selectedCollegeID > 0)
+            {
+                collegeData.CollegeId = selectedCollegeID;
+                collegeData.CollegeName = collegeNameTextbox.Text;
+                collegeData.Location = locationTextbox.Text;
+                collegeData.Remarks = remarksTextbox.Text;
 
+                collegeDetailsRepository.EditCollegeDetailsByID(collegeData);
+                MessageBox.Show("Updated Successfully");
+                ClearControls();
+            }
         }
-
+        void ClearControls()
+        {
+            collegeNameTextbox.Text = string.Empty;
+            locationTextbox.Text = string.Empty;
+            remarksTextbox.Text = string.Empty;
+            PopulateCollegeCombo();
+            collegeNameCombobox.SelectedIndex = 0;
+            selectedCollegeID = 0;
+        }
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?",
+                                                 "Confirmation",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
 
+            if (result == DialogResult.Yes)
+            {
+                if (selectedCollegeID > 0)
+                {
+                    collegeData.CollegeId = selectedCollegeID;
+                    collegeDetailsRepository.DeleteCollegeByID(collegeData);
+                    MessageBox.Show("Deleted Successfully");
+                    ClearControls();
+                }
+            }
         }
     }
 }

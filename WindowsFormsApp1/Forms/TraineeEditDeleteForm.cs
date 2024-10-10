@@ -16,5 +16,10 @@ namespace TrainingManagementProject.Forms
         {
             InitializeComponent();
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
