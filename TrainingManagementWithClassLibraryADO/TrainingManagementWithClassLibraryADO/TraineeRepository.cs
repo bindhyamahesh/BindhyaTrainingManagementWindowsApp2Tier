@@ -23,7 +23,10 @@ namespace TrainingManagementWithClassLibraryADO
             //DataTable dataTable= sqlHelperRepository.ExecuteQuery(query);
             //return dataTable;
 
-            string spName = "GetTrainees";
+            string spName = "spTrainees";
+            SqlParameter[] parameters = {
+                new SqlParameter("@Option", 's')
+            };
             DataTable dataTable = sqlHelperRepository.ExecuteQueryWithStoredProcedure(spName);
             foreach (DataRow item in dataTable.Rows)
             {
@@ -37,7 +40,7 @@ namespace TrainingManagementWithClassLibraryADO
                     TraineeLocation = item["TraineeLocation"].ToString(),
                     Email = item["Email"].ToString(),
                     Phone = item["Phone"].ToString(),
-                    Discontinue = GetDiscontinueChar(item["Discontinue"].ToString()),
+                   // Discontinue = GetDiscontinueChar(item["Discontinue"].ToString()),
                     CollegeName = item["CollegeName"].ToString()
 
                 };
@@ -58,7 +61,7 @@ namespace TrainingManagementWithClassLibraryADO
             }
             return default;
         }
-        public void InsertTraineeDetails(Trainees trainee)
+        public void InsertEditDeleteTraineeDetails(Trainees trainee,char option)
         {
             //string insertQuery = "INSERT INTO Trainees (CollegeId, TraineeName) VALUES (@CollegeId, @TraineeeName)";
             //SqlParameter[] parameters = {
@@ -67,10 +70,16 @@ namespace TrainingManagementWithClassLibraryADO
             //};
             //sqlHelperRepository.ExecuteNonQuery(insertQuery, parameters);
 
-            string spName = "TraineesInsert";
+            string spName = "spTrainees";
             SqlParameter[] parameters = {
-                new SqlParameter("@TraineeeName", trainee.TraineeName),
-                new SqlParameter("@CollegeId", trainee.CollegeId)
+                 new SqlParameter("@Option", option),
+                new SqlParameter("@TraineeName", trainee.TraineeName),
+                new SqlParameter("@TraineeLocation", trainee.TraineeLocation),
+                new SqlParameter("@CollegeId", trainee.CollegeId),
+                new SqlParameter("@Email", trainee.Email),
+                new SqlParameter("@Phone", trainee.Phone),
+                new SqlParameter("@Discontinue", trainee.Discontinue)
+
             };
             sqlHelperRepository.ExecuteNonQueryWithStoredProcedure(spName, parameters);
         }

@@ -49,6 +49,7 @@ namespace TrainingManagementProject.Forms
             this.collegeNameCombobox.Name = "collegeNameCombobox";
             this.collegeNameCombobox.Size = new System.Drawing.Size(253, 21);
             this.collegeNameCombobox.TabIndex = 0;
+            this.collegeNameCombobox.SelectedIndexChanged += new System.EventHandler(this.collegeNameCombobox_SelectedIndexChanged);
             this.collegeNameCombobox.SelectionChangeCommitted += new System.EventHandler(this.collegeNameCombobox_SelectionChangeCommitted);
             // 
             // label1

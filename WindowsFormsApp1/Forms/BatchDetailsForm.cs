@@ -25,8 +25,8 @@ namespace Trainingmanagement.Forms
         private void BatchDetailsForm_Load(object sender, EventArgs e)
         {
             batchDetailsDatagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 8, FontStyle.Bold);
-
-            List<Batches> batches = batchRepository.GetBatchDetails();
+            Batches batch = new Batches();
+            List<Batches> batches = batchRepository.GetBatchDetails(batch,"select");
             batchDetailsDatagrid.DataSource = batches;
             CustomizeDataGridHeader();
         }

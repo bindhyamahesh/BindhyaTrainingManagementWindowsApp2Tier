@@ -9,6 +9,6 @@ namespace TrainingManagementWithClassLibraryADO
         void EditCollegeDetailsByID(College collegeData);
         List<College> GetCollegeDetails();
         College GetCollegeDetailsByID(College collegeData);
-        void InsertCollegeDetails(College collegeData);
+        int InsertCollegeDetails(College collegeData);
     }
 }

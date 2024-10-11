@@ -5,6 +5,7 @@ namespace TrainingManagementWithClassLibraryADO
 {
     public interface IBatchRepository
     {
-        List<Batches> GetBatchDetails();
+        List<Batches> GetBatchDetails(Batches batchs, string option);
+        void InsertEditDeleteBatchDetails(Batches batches,string option);
     }
 }

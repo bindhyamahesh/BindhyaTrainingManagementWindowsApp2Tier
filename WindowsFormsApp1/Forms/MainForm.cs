@@ -87,7 +87,9 @@ namespace TrainingManagementProject.Forms
 
         private void batchEditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            BatchEditDelete batchEditDeleteForm=new BatchEditDelete();
+            batchEditDeleteForm.MdiParent = this;
+            batchEditDeleteForm.Show();
         }
 
         private void batchToolStripMenuItem_Click(object sender, EventArgs e)

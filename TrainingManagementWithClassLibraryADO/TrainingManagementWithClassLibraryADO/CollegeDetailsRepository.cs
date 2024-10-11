@@ -27,23 +27,30 @@ namespace TrainingManagementWithClassLibraryADO
         public List<College> GetCollegeDetails()
         {
             List<College> colleges = new List<College>();
-            string storedProcedureName = "GetCollegeDetails";
-            // string query = "SELECT * FROM Colleges";
-            //return sqlHelperRepository.ExecuteQuery(query);          
-            DataTable collegeDataTable = sqlHelperRepository.ExecuteQueryWithStoredProcedure(storedProcedureName);
-            foreach (DataRow item in collegeDataTable.Rows)
+            try
             {
-                College college = new College()
-
+                string storedProcedureName = "spColleges";
+                SqlParameter[] parameters = { new SqlParameter("@Option", 's') };
+                // string query = "SELECT * FROM Colleges";
+                //return sqlHelperRepository.ExecuteQuery(query);          
+                DataTable collegeDataTable = sqlHelperRepository.ExecuteQueryWithStoredProcedure(storedProcedureName);
+                foreach (DataRow item in collegeDataTable.Rows)
                 {
-                    CollegeId = Convert.ToInt32(item["CollegeId"]),
-                    CollegeName = item["CollegeName"].ToString(),
-                    Location = item["Location"].ToString(),
-                    Remarks = item["Remarks"].ToString()
+                    College college = new College()
+
+                    {
+                        CollegeId = Convert.ToInt32(item["CollegeId"]),
+                        CollegeName = item["CollegeName"].ToString(),
+                        Location = item["Location"].ToString(),
+                        Remarks = item["Remarks"].ToString()
 
 
-                };
-                colleges.Add(college);
+                    };
+                    colleges.Add(college);
+                }
+            }
+            catch (Exception ex)
+            {
             }
             return colleges;
         }
@@ -70,43 +77,57 @@ namespace TrainingManagementWithClassLibraryADO
             return selectedcollege;
         }
 
-        public void InsertCollegeDetails(College collegeData)
+        public int InsertCollegeDetails(College collegeData)
         {
-            //string insertQuery = "INSERT INTO Colleges (CollegeName, Location, Remarks) VALUES (@CollegeName, @Location, @Remarks)";
+            int inserted = 0;
+            //string storedProcedureName = "CollegeInsert";
             //SqlParameter[] parameters = {
             //    new SqlParameter("@CollegeName", collegeData.CollegeName),
-            //    new SqlParameter("@Location", collegeData. ),
+            //    new SqlParameter("@Location", collegeData.Location),
             //    new SqlParameter("@Remarks", collegeData.Remarks)
             //};
-            //sqlHelperRepository.ExecuteNonQuery(insertQuery, parameters);
-            string storedProcedureName = "CollegeInsert";
-            SqlParameter[] parameters = {
+            try
+            {
+                string storedProcedureName = "spColleges";
+                SqlParameter[] parameters = {
+                 new SqlParameter("@Option", 'i'),
                 new SqlParameter("@CollegeName", collegeData.CollegeName),
                 new SqlParameter("@Location", collegeData.Location),
                 new SqlParameter("@Remarks", collegeData.Remarks)
             };
-            sqlHelperRepository.ExecuteNonQueryWithStoredProcedure(storedProcedureName, parameters);
+                sqlHelperRepository.ExecuteNonQueryWithStoredProcedure(storedProcedureName, parameters);
+            }
+            catch (Exception ex)
+            {
+                inserted = 0;
+            }
+            return inserted;
         }
 
         public void EditCollegeDetailsByID(College collegeData)
         {
-            //string updateQuery = "UPDATE Colleges SET CollegeName = @CollegeName, Location = @Location, Remarks = @Remarks WHERE CollegeId = @CollegeId";
-            //SqlParameter[] parameters = {
-            //    new SqlParameter("@CollegeName", collegeData.CollegeName),
-            //    new SqlParameter("@Location", collegeData.Location),
-            //    new SqlParameter("@Remarks", collegeData.Remarks),
-            //    new SqlParameter("@CollegeId", collegeData.CollegeId)
-            //};
-            //sqlHelperRepository.ExecuteNonQuery(updateQuery, parameters);
-
-            string spName = "CollegeUpdate";
-            SqlParameter[] parameters = {
+            try
+            {
+                //string spName = "CollegeUpdate";
+                //SqlParameter[] parameters = {
+                //    new SqlParameter("@CollegeName", collegeData.CollegeName),
+                //    new SqlParameter("@Location", collegeData.Location),
+                //    new SqlParameter("@Remarks", collegeData.Remarks),
+                //    new SqlParameter("@CollegeId", collegeData.CollegeId)
+                //};
+                string storedProcedureName = "spColleges";
+                SqlParameter[] parameters = {
+                 new SqlParameter("@Option", 'u'),
                 new SqlParameter("@CollegeName", collegeData.CollegeName),
                 new SqlParameter("@Location", collegeData.Location),
                 new SqlParameter("@Remarks", collegeData.Remarks),
-                new SqlParameter("@CollegeId", collegeData.CollegeId)
+                 new SqlParameter("@CollegeId", collegeData.CollegeId)
             };
-            sqlHelperRepository.ExecuteQueryWithStoredProcedure(spName, parameters);
+                sqlHelperRepository.ExecuteNonQueryWithStoredProcedure(storedProcedureName, parameters);
+            }
+            catch (Exception ex)
+            {
+            }
 
         }
         public void DeleteCollegeByID(College collegeData)
@@ -115,8 +136,9 @@ namespace TrainingManagementWithClassLibraryADO
             //SqlParameter[] parameters = { new SqlParameter("@CollegeId", collegeData.CollegeId) };
             //sqlHelperRepository.ExecuteNonQuery(deleteQuery, parameters);
 
-            string spName = "CollegeDeleteByID";
-            SqlParameter[] parameters = { new SqlParameter("@CollegeId", collegeData.CollegeId) };
+            string spName = "spColleges";
+            SqlParameter[] parameters = { new SqlParameter("@Option", 'd'), 
+                                          new SqlParameter("@CollegeId", collegeData.CollegeId) };
             sqlHelperRepository.ExecuteQueryWithStoredProcedure(spName, parameters);
 
         }

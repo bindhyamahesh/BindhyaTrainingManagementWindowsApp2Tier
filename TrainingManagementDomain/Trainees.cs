@@ -18,5 +18,6 @@ namespace TrainingManagementDomain
         public char Discontinue { get; set; }
         public string CollegeName { get; set; }
         public string BatchName { get; set; }
+
     }
 }

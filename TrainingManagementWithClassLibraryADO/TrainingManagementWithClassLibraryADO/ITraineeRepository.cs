@@ -6,6 +6,6 @@ namespace TrainingManagementWithClassLibraryADO
     public interface ITraineeRepository
     {
         List<Trainees> GetTrainees();
-        void InsertTraineeDetails(Trainees trainee);
+        void InsertEditDeleteTraineeDetails(Trainees trainee,char option);
     }
 }

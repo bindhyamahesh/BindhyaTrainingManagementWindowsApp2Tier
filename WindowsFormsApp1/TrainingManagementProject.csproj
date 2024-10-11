@@ -56,6 +56,12 @@
     <Compile Include="Forms\BatchDetailsForm.Designer.cs">
       <DependentUpon>BatchDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BatchEditDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BatchEditDelete.Designer.cs">
+      <DependentUpon>BatchEditDelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BatchInsertForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\BatchDetailsForm.resx">
       <DependentUpon>BatchDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BatchEditDelete.resx">
+      <DependentUpon>BatchEditDelete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BatchInsertForm.resx">
       <DependentUpon>BatchInsertForm.cs</DependentUpon>

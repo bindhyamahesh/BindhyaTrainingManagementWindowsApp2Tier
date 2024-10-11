@@ -46,7 +46,14 @@ namespace TrainingManagementProject.Forms
             Trainees trainee = new Trainees();
             trainee.CollegeId= Convert.ToInt32(collegesComboBox.SelectedValue);
             trainee.TraineeName = traineeNameTextBox.Text;
-           traineeRepository.InsertTraineeDetails(trainee);
+            trainee.TraineeLocation = traineeLocationTextBox.Text;
+            trainee.Email = traineeEmailTextBox.Text;
+            trainee.Phone = traineePhoneTextBox.Text;
+            trainee.Discontinue = 'N';
+            if (yesRadiobutton.Checked)
+                trainee.Discontinue = 'Y';
+
+            traineeRepository.InsertEditDeleteTraineeDetails(trainee,'i');
             MessageBox.Show("Records Saved.");
         }
     }

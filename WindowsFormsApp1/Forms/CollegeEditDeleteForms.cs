@@ -103,5 +103,10 @@ namespace TrainingManagementProject.Forms
                 }
             }
         }
+
+        private void collegeNameCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

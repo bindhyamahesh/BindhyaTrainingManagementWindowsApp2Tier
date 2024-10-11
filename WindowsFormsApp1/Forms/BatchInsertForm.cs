@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrainingManagementDomain;
+using TrainingManagementWithClassLibraryADO;
 
 namespace TrainingManagementProject.Forms
 {
     public partial class BatchInsertForm : Form
     {
+        Batches batches=new Batches();
+        IBatchRepository batchRepository;
         public BatchInsertForm()
         {
             InitializeComponent();
+            batchRepository = new BatchRepository(ConfigurationManager.AppSettings.Get("Con"));
         }
 
         private void startDateTextbox_Click(object sender, EventArgs e)
@@ -79,6 +85,24 @@ namespace TrainingManagementProject.Forms
         private void batchNameTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            batches.BatchName=batchNameTextBox.Text;
+            batches.StartDate = string.IsNullOrEmpty(startDateTextbox.Text) ? DateTime.MinValue : Convert.ToDateTime(startDateTextbox.Text);
+            batches.EndDate = string.IsNullOrEmpty(endDateTextbox.Text)?DateTime.MinValue : Convert.ToDateTime(endDateTextbox.Text);
+            batches.TentativeEndDate = string.IsNullOrEmpty(tentativeEndDateTextbox.Text) ? DateTime.MinValue : Convert.ToDateTime(tentativeEndDateTextbox.Text);
+            
+            batches.Fees= string.IsNullOrEmpty(feesTextBox.Text) ? 0: Convert.ToDouble(feesTextBox.Text);
+            batches.FeesPaid = string.IsNullOrEmpty(feesPaidTextBox.Text) ? 0 : Convert.ToDouble(feesPaidTextBox.Text);
+            batches.Duration = string.IsNullOrEmpty(durationTextbox.Text) ? 0 : Convert.ToDouble(durationTextbox.Text);
+            batches.HoursTaken = string.IsNullOrEmpty(hoursTakentextBox.Text) ? 0 : Convert.ToDouble(hoursTakentextBox.Text);
+            batches.Details = detailsTextbox.Text;
+            batches.Remarks = remarksTextbox.Text;
+            batchRepository.InsertEditDeleteBatchDetails(batches,"insert");
+            MessageBox.Show("Successfully inserted.");
+            
         }
     }
 }

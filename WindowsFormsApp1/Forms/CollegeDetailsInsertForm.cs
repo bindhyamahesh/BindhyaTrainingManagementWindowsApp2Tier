@@ -29,8 +29,11 @@ namespace TrainingManagementProject.Forms
             collegeData.Location = locationTextbox.Text;
             collegeData.Remarks = remarksTextbox.Text;
 
-            collegeDetailsRepository.InsertCollegeDetails(collegeData);
+           int inserted=  collegeDetailsRepository.InsertCollegeDetails(collegeData);
+            if(inserted > 0) 
             MessageBox.Show("Inserted successfully.");
+            else
+                MessageBox.Show("Failed to insert.");
         }
     }
 }
